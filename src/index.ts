@@ -15,8 +15,9 @@ app.get("/", (c) => c.text("Hello Hono!"));
 app.use(
   "/*",
   cors({
-    origin: ["https://cloudflare-react-vite.pages.dev/"],
+    origin: "*", // Allow all origins for now. Use specific domains in production.
     allowMethods: ["POST", "GET", "OPTIONS", "DELETE", "PATCH"],
+    allowHeaders: ["Content-Type"], // Ensure the required headers are allowed.
   })
 );
 app.route("/todo", todoRoutes);
